@@ -1,3 +1,6 @@
+# There are more lightweight images such as node:14.15.5
+# I am not using it here because It doesn't work well with the nginx repository 
+# If I used that image I would no longer need to install node.js 14.15.5, it would already be installed
 FROM launcher.gcr.io/google/nodejs
 
 # Install nginx and supervisor
