@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: parkos-deployment
+  namespace: example
+  labels:
+    app: parkos
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: parkos
+  template:
+    metadata:
+      labels:
+        app: parkos
+    spec:
+      containers:
+      - name: parkos
+        image: dimitrisgian/parkos:1.0.2
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          # httpGet:
+          #   path: /
+          #   port: 8080
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        readinessProbe:
+          # httpGet:
+          #   path: /
+          #   port: 8080
+          tcpSocket:
+            port: 8080
+          initialDelaySeconds: 5
+          periodSeconds: 10

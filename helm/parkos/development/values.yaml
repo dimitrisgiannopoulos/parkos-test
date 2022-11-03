@@ -1,0 +1,21 @@
+# Default values for parkos.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+
+image:
+  repository: dimitrisgian/parkos:1.0.2
+  pullPolicy: IfNotPresent
+
+replicas: 2
+
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+
